@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 import base64
 import ffmpeg
 import subprocess
@@ -16,8 +16,8 @@ def extract_using_ffmpeg_subprocess(video_url: str, timestamp: str, image_name: 
     print("[Extraction error]", e)
     return False
 
-@app.route('/')
-def extract(request):
+@app.route('/', methods=['POST'])
+def extract():
   if request.method != 'POST': 
     return ('Method not allowed', 405)
   
