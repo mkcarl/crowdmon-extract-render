@@ -47,3 +47,9 @@ def extract(request):
     return {'error':'Internal server error'}, 500
   
   return {"msg":'ok', "data": data}, 200
+
+
+if __name__ == "__main__":
+    from waitress import serve
+    print(f'Running on http://localhost:8080')
+    serve(app, host="0.0.0.0", port=8080)
