@@ -26,7 +26,7 @@ def extract():
   timestamp = data['timestamp'] if 'timestamp' in data else None
   image_name = f'{timestamp}.jpg'
   
-  if not video_url or not timestamp:
+  if not video_url or (timestamp != 0 and not timestamp):
     return {'error':'Invalid argument in url or time'}, 400
   
   subprocess_res = extract_using_ffmpeg_subprocess(video_url, timestamp, image_name)
